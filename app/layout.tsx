@@ -1,6 +1,10 @@
+// "use client";
+
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Jost } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -10,6 +14,16 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+// const jost = Jost({
+//   variable: "--font-jost",
+//   subsets: ["latin"]
+// })
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'], // Specify needed weights
 });
 
 export const metadata: Metadata = {
@@ -25,9 +39,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${jost.className} ${geistMono.variable} antialiased`}
       >
+        <Navbar />
         {children}
+        <Footer />
       </body>
     </html>
   );
