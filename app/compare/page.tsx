@@ -80,13 +80,10 @@ export default function ComparePage() {
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-slate-900 mb-2">
-            Document Comparison Tool
+            Comparison Tool
           </h1>
           <p className="text-slate-600">
-            Compare two versions of a privacy policy to see what changed
-          </p>
-          <p className="text-sm text-slate-500 mt-1">
-            Upload documents (PDF, DOCX, TXT) or paste text directly
+            Compare two versions of a document to see what changed
           </p>
         </div>
 
