@@ -42,8 +42,9 @@ Respond in JSON format:
           content: prompt,
         },
       ],
-      model: 'openai/gpt-oss-safeguard-20b', // Fast and good quality
-      temperature: 0.3, // Lower = more consistent
+      model: 'openai/gpt-oss-safeguard-20b',
+      // model: 'llama-3.3-70b-versatile',
+      temperature: 0.3,
       max_tokens: 1000,
       response_format: { type: 'json_object' },
     });

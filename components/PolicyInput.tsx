@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { parseDocument, formatFileSize } from '@/lib/documentParser';
 
 interface PolicyInputProps {
@@ -23,19 +23,15 @@ export default function PolicyInput({ label, value, onChange, placeholder }: Pol
     setError(null);
     setUploadedFileName(null);
 
-    console.log("attempting to upload")
-
     try {
       const text = await parseDocument(file);
       onChange(text);
       setUploadedFileName(`${file.name} (${formatFileSize(file.size)})`);
     } catch (err) {
-        console.log("can't upload")
       setError(err instanceof Error ? err.message : 'Failed to parse document');
-      onChange(''); // Clear on error
+      onChange(''); 
     } finally {
       setIsLoading(false);
-      // Reset input so same file can be uploaded again
       e.target.value = '';
     }
   };
@@ -132,7 +128,7 @@ export default function PolicyInput({ label, value, onChange, placeholder }: Pol
         value={value}
         onChange={(e) => {
           onChange(e.target.value);
-          setUploadedFileName(null); // Clear file name if user starts typing
+          setUploadedFileName(null);
         }}
         placeholder={placeholder}
         disabled={isLoading}

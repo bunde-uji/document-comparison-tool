@@ -15,7 +15,7 @@ function Navbar() {
                 <div className="w-10 h-10 bg-slate-900 rounded-lg transform group-hover:rotate-12 transition-transform duration-300"></div>
                 <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-lg">J</div>
               </div>
-              <span className="text-2xl font-extrabold text-slate-900 tracking-tight serif">Juxta<span className="text-indigo-600">Doc</span></span>
+              <span className="text-2xl font-extrabold text-slate-900 tracking-tight serif">Juxta<span className="text-indigo-600">Docs</span></span>
             </Link>
             
             <div className="hidden md:flex items-center gap-10">

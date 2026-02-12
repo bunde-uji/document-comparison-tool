@@ -1,21 +1,8 @@
 import mammoth from 'mammoth';
-import * as pdfjsLib from 'pdfjs-dist';
-
-// Set up PDF.js worker - point to the file you copied
-if (typeof window !== 'undefined') {
-    pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
-    // The '/' means it looks in the public folder
-  }
-
-// Set up PDF.js worker - use local file
-if (typeof window !== 'undefined') {
-  pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
-}
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 
 export async function parseDocument(file: File): Promise<string> {
-  // Check file size
   if (file.size > MAX_FILE_SIZE) {
     throw new Error(`File too large. Maximum size is ${MAX_FILE_SIZE / 1024 / 1024}MB`);
   }
@@ -23,7 +10,6 @@ export async function parseDocument(file: File): Promise<string> {
   const fileType = file.type;
   const fileName = file.name.toLowerCase();
 
-  // Handle DOCX
   if (
     fileType === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
     fileName.endsWith('.docx')
@@ -33,13 +19,19 @@ export async function parseDocument(file: File): Promise<string> {
     return result.value;
   }
 
-  // Handle DOC
   if (fileType === 'application/msword' || fileName.endsWith('.doc')) {
     throw new Error('Legacy .doc files are not supported. Please convert to .docx or PDF');
   }
 
-  // Handle PDF
   if (fileType === 'application/pdf' || fileName.endsWith('.pdf')) {
+    // Only import pdfjs on client side when needed
+    const pdfjsLib = await import('pdfjs-dist');
+    
+    // Set worker path
+    if (typeof window !== 'undefined') {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.mjs';
+    }
+
     try {
       const arrayBuffer = await file.arrayBuffer();
       const loadingTask = pdfjsLib.getDocument({
@@ -59,7 +51,7 @@ export async function parseDocument(file: File): Promise<string> {
         fullText += pageText + '\n\n';
       }
 
-      await pdf.destroy(); // Clean up
+      await pdf.destroy();
       return fullText.trim();
     } catch (error) {
       console.error('PDF parsing error:', error);
@@ -67,7 +59,6 @@ export async function parseDocument(file: File): Promise<string> {
     }
   }
 
-  // Handle plain text
   if (fileType === 'text/plain' || fileName.endsWith('.txt')) {
     return await file.text();
   }

@@ -17,7 +17,7 @@ function Footer() {
                 </div>
               </div>
               <span className="text-2xl font-extrabold text-white tracking-tight serif">
-                Juxta<span className="text-indigo-600">Doc</span>
+                Juxta<span className="text-indigo-600">Docs</span>
               </span>
             </Link>
             {/* <p className="text-sm">Built by [Your Name] - Frontend Engineer + Law Graduate</p> */}

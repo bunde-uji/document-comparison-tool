@@ -1,7 +1,5 @@
 import jspdf from 'jspdf';
-import domtoimage from 'dom-to-image-more';
 
-// In lib/pdfExport.ts
 export async function exportDiffToPDF(
   elementId: string,
   filename: string = 'document-comparison.pdf'
@@ -12,22 +10,17 @@ export async function exportDiffToPDF(
       throw new Error('Element not found');
     }
 
-    const dataUrl = await domtoimage.toPng(element, {
+    // Dynamic import - only load when needed
+    const domtoimage = await import('dom-to-image-more');
+
+    // Generate PNG from DOM element
+    const dataUrl = await domtoimage.default.toPng(element, {
       quality: 0.95,
       bgcolor: '#ffffff',
     });
 
+    // Create PDF
     const pdf = new jspdf('p', 'mm', 'a4');
-    
-    // Add metadata
-    pdf.setProperties({
-      title: 'Document Comparison Report',
-      subject: 'Policy Diff Analysis',
-      author: 'Privacy Policy Diff Tool',
-      keywords: 'comparison, diff, policy',
-      creator: 'Privacy Policy Diff Tool'
-    });
-    
     const imgWidth = 210;
     const pageHeight = 297;
     

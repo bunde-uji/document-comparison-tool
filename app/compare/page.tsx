@@ -1,13 +1,25 @@
 'use client';
 
+import { Jost, Geist_Mono } from "next/font/google";
+
 import { useState } from 'react';
 import PolicyInput from '@/components/PolicyInput';
 import DiffViewer from '@/components/DiffViewer';
 import DiffStats from '@/components/DiffStats';
 import AISummary from '@/components/AiSummary';
-import Link from 'next/link';
 import { exportDiffToPDF, generatePDFFilename } from '@/lib/pdfExport';
 import { generateChangeSummary, SummaryResult } from '@/lib/aiSummary';
+
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+});
 
 export default function ComparePage() {
   const [oldPolicy, setOldPolicy] = useState('');
@@ -66,7 +78,7 @@ export default function ComparePage() {
   const canCompare = oldPolicy.trim().length > 0 && newPolicy.trim().length > 0;
 
   return (
-    <main className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 py-20">
+    <main className={`${jost.className} antialiased min-h-screen bg-linear-to-br from-slate-50 to-slate-100 py-20`}>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Header */}
         <div className="text-center mb-8">

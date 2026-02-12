@@ -1,13 +1,26 @@
 import Link from "next/link";
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { HiOutlineDocumentDuplicate } from "react-icons/hi";
+import { FaShieldAlt, FaUser, FaUsers } from "react-icons/fa";
 import { GiClick } from "react-icons/gi";
 import Image from "next/image";
 import demo from "../assets/img/demo.png";
+import { Jost, Geist_Mono } from "next/font/google";
+
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const jost = Jost({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+});
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-slate-50 bg-red-200">
+    <div className={`${jost.className} antialiased min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-slate-50 bg-red-200`}>
       {/* Hero Section */}
       <section className="container mx-auto px-4 pt-28 pb-16 text-center max-w-5xl h-[80vh] relative">
         {/* <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
@@ -29,7 +42,7 @@ export default function HomePage() {
           .
         </h1>
         <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed font-light max-w-2xl mx-auto">
-          LexDiff AI bridges the gap between massive legal updates and
+          JuxtaDocs bridges the gap between massive legal updates and
           actionable insights with professional-grade redline comparisons.
         </p>
 
@@ -74,7 +87,7 @@ export default function HomePage() {
             <p className="text-5xl md:text-6xl font-black text-slate-900 serif">Engineered for the <br/>highest stakes.</p>
           </div>
           <p className="text-lg text-slate-500 max-w-sm mb-2">
-            Standard text diffs are for code. LexDiff AI is built for language, nuances, and legal consequences.
+            Standard text diffs are for code. JuxtaDocs is built for language, nuances, and legal consequences.
           </p>
         </div>
 
@@ -82,7 +95,7 @@ export default function HomePage() {
           <div className="relative">
             <div className="absolute -inset-4 bg-indigo-50 rounded-[2rem] -rotate-2 -z-10"></div>
             <img 
-              src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1200" 
+              src="/doc_image.png" 
               alt="Legal Review" 
               className="rounded-[1.5rem] shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
             />
@@ -92,19 +105,18 @@ export default function HomePage() {
             <div>
               <h3 className="text-3xl font-bold text-slate-900 mb-6 serif">The Cost of &quot;Missed Changes&quot;</h3>
               <p className="text-lg text-slate-600 leading-relaxed">
-                In a recent study, manual document review missed 15% of semantic changes that didn&apos;t use obvious keywords. LexDiff AI uses a transformer-based model to understand the *meaning* of clauses, not just the characters.
+                In a recent study, manual document review missed 15% of semantic changes that didn&apos;t use obvious keywords. JuxtaDocs uses a transformer-based model to understand the meaning of clauses, not just the words.
               </p>
             </div>
             
             <div className="grid gap-6">
               {[
-                { title: "Risk Mitigation", desc: "Instantly flags changes to indemnity and liability clauses.", icon: "fa-shield-halved" },
-                { title: "Version Control", desc: "Keeps a clear record of who added what and when.", icon: "fa-code-branch" },
-                { title: "Team Collaboration", desc: "Share redlines with stakeholders in a clean, human-readable format.", icon: "fa-users" }
+                { title: "Risk Mitigation", desc: "Instantly flags changes to indemnity and liability clauses.", icon: <FaShieldAlt size={20} /> },
+                { title: "Team Collaboration", desc: "Share redlines with stakeholders in a clean, human-readable format.", icon: <FaUsers size={20} /> }
               ].map((item, idx) => (
                 <div key={idx} className="flex gap-6 p-6 rounded-2xl hover:bg-slate-50 transition-colors border border-transparent hover:border-slate-100">
                   <div className="w-12 h-12 rounded-xl bg-white shadow-sm flex items-center justify-center text-indigo-600 text-xl border border-slate-100 shrink-0">
-                    <i className={`fas ${item.icon}`}></i>
+                    {item.icon}
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-900 mb-1">{item.title}</h4>
@@ -188,7 +200,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 {/* <span className="text-2xl font-bold text-blue-600">1</span> */}
-                <MdOutlineCloudUpload size={30} className="text-blue-600" />
+                <MdOutlineCloudUpload size={30} className="text-indigo-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-2">
                 Upload or Paste
@@ -202,7 +214,7 @@ export default function HomePage() {
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 {/* <span className="text-2xl font-bold text-blue-600">2</span> */}
-                <GiClick size={30} className="text-blue-600" />
+                <GiClick size={30} className="text-indigo-600" />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-2">
                 Hit Compare
@@ -218,15 +230,14 @@ export default function HomePage() {
                 {/* <span className="text-2xl font-bold text-blue-600">3</span> */}
                 <HiOutlineDocumentDuplicate
                   size={30}
-                  className="text-blue-600"
+                  className="text-indigo-600"
                 />
               </div>
               <h3 className="text-xl font-semibold text-slate-900 mb-2">
                 Review Changes
               </h3>
               <p className="text-slate-600">
-                See additions in green, deletions in red, with side-by-side
-                comparison.
+                Get a summary of the differences and a redline of the document.
               </p>
             </div>
           </div>
