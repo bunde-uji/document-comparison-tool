@@ -28,7 +28,6 @@ export default function ComparePage() {
   const [splitView, setSplitView] = useState(true);
   const [isExporting, setIsExporting] = useState(false);
   
-  // AI Summary state
   const [aiSummary, setAiSummary] = useState<SummaryResult | null>(null);
   const [isGeneratingSummary, setIsGeneratingSummary] = useState(false);
   const [summaryError, setSummaryError] = useState<string | null>(null);
@@ -36,7 +35,6 @@ export default function ComparePage() {
   const handleCompare = () => {
     if (oldPolicy.trim() && newPolicy.trim()) {
       setShowDiff(true);
-      // Auto-generate summary when comparing
       handleGenerateSummary();
     }
   };
@@ -80,10 +78,9 @@ export default function ComparePage() {
   return (
     <main className={`${jost.className} antialiased min-h-screen bg-linear-to-br from-slate-50 to-slate-100 py-20`}>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-slate-900 mb-2">
-            Privacy Policy Diff Tool
+            Document Comparison Tool
           </h1>
           <p className="text-slate-600">
             Compare two versions of a privacy policy to see what changed
@@ -150,7 +147,6 @@ export default function ComparePage() {
                   </button>
                 </div>
 
-                {/* Export PDF Button */}
                 <button
                   onClick={handleExportPDF}
                   disabled={isExporting}
@@ -199,7 +195,6 @@ export default function ComparePage() {
               <DiffStats oldText={oldPolicy} newText={newPolicy} />
             </div>
 
-            {/* AI Summary Section */}
             {isGeneratingSummary && (
               <div className="bg-white rounded-lg shadow-lg border border-slate-200 p-8 mb-6 text-center">
                 <svg className="animate-spin h-8 w-8 text-blue-600 mx-auto mb-3" fill="none" viewBox="0 0 24 24">
@@ -233,7 +228,6 @@ export default function ComparePage() {
               <AISummary summary={aiSummary} />
             )}
 
-            {/* Diff Viewer */}
             <DiffViewer
               oldText={oldPolicy}
               newText={newPolicy}
@@ -242,7 +236,6 @@ export default function ComparePage() {
           </>
         )}
 
-        {/* Footer */}
         <footer className="mt-12 text-center text-slate-500 text-sm">
           <p>Built to help users understand privacy policy changes</p>
           <p className="mt-1 text-xs">All processing happens in your browser - your documents never leave your device</p>
