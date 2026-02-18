@@ -24,9 +24,6 @@ function Footer() {
           </div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-white transition-colors">
-              LinkedIn
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
               GitHub
             </a>
             <a href="#" className="hover:text-white transition-colors">
