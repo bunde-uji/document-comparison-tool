@@ -20,14 +20,10 @@ function Footer() {
                 Juxta<span className="text-indigo-600">Docs</span>
               </span>
             </Link>
-            {/* <p className="text-sm">Built by [Your Name] - Frontend Engineer + Law Graduate</p> */}
           </div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-white transition-colors">
+            <a href="https://github.com/bunde-uji/document-comparison-tool" className="hover:text-white transition-colors">
               GitHub
-            </a>
-            <a href="#" className="hover:text-white transition-colors">
-              Email
             </a>
           </div>
         </div>
