@@ -45,8 +45,8 @@ export default function AISummary({ summary }: AISummaryProps) {
         <h4 className="text-sm font-semibold text-slate-900 mb-2">Key Changes:</h4>
         <ul className="space-y-2">
           {summary.keyChanges.map((change, index) => (
-            <li key={index} className="flex items-start gap-2">
-              <span className="text-blue-600 mt-1">•</span>
+            <li key={index} className="flex items-center gap-2">
+              <span className="text-blue-600 mt-1 -translate-y-[10%]">•</span>
               <span className="text-slate-700 text-sm">{change}</span>
             </li>
           ))}
