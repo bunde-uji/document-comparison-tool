@@ -1,6 +1,6 @@
 import mammoth from 'mammoth';
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
 export async function parseDocument(file: File): Promise<string> {
   if (file.size > MAX_FILE_SIZE) {

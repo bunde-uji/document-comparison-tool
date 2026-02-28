@@ -2,7 +2,7 @@ import Groq from 'groq-sdk';
 
 const groq = new Groq({
   apiKey: process.env.NEXT_PUBLIC_GROQ_API_KEY,
-  dangerouslyAllowBrowser: true, // For client-side use
+  dangerouslyAllowBrowser: true,
 });
 
 export interface SummaryResult {
@@ -43,7 +43,6 @@ Respond in JSON format:
         },
       ],
       model: 'openai/gpt-oss-safeguard-20b',
-      // model: 'llama-3.3-70b-versatile',
       temperature: 0.3,
       max_tokens: 1000,
       response_format: { type: 'json_object' },

@@ -11,7 +11,7 @@ interface DiffViewerProps {
 export default function DiffViewer({ oldText, newText, splitView }: DiffViewerProps) {
   return (
     <div 
-      id="diff-container" // ← Add this ID
+      id="diff-container" 
       className="bg-white rounded-lg shadow-lg overflow-hidden border border-slate-200"
     >
       <ReactDiffViewer
