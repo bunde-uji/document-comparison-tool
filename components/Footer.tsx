@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaGithub } from "react-icons/fa";
 
 function Footer() {
   return (
@@ -22,7 +23,8 @@ function Footer() {
             </Link>
           </div>
           <div className="flex gap-6">
-            <a href="https://github.com/bunde-uji/document-comparison-tool" className="hover:text-white transition-colors">
+            <a href="https://github.com/bunde-uji/document-comparison-tool" className="hover:text-white transition-colors flex items-center gap-1">
+              <FaGithub />
               GitHub
             </a>
           </div>
