@@ -23,7 +23,10 @@ function Footer() {
             </Link>
           </div>
           <div className="flex gap-6">
-            <a href="https://github.com/bunde-uji/document-comparison-tool" className="hover:text-white transition-colors flex items-center gap-1">
+            <a
+              href="https://github.com/bunde-uji/document-comparison-tool"
+              className="hover:text-white transition-colors flex items-center gap-1"
+            >
               <FaGithub />
               GitHub
             </a>
@@ -31,8 +34,7 @@ function Footer() {
         </div>
         <div className="mt-8 pt-8 border-t border-slate-800 text-center text-sm">
           <p>
-            All processing happens in your browser. Your documents are never
-            uploaded to any server.
+            &copy; {new Date().getFullYear()} JuxtaDocs. All rights reserved.
           </p>
         </div>
       </div>
